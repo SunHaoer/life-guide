@@ -1,0 +1,8 @@
+Hi,
+
+根据最新情报，今天黄金的价格是 #{latestPrice} 元 低于预期 #{hopePrice} 元。单纯的说一下，买不买自己看。
+
+
+Thanks,
+Gold Guide
+

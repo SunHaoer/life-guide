@@ -10,7 +10,8 @@ public class MessageFactory {
 
     final private static String FROM_ADDRESS = "2457302636@qq.com";
     final private static String[] EMAIL_SUBJECT = {"gold guide"};
-    final private static String[] EMAIL_TEMPLATE_NAME = {"goldGuideEmail.html"};
+    final private static String[] EMAIL_TEMPLATE_NAME = {"goldGuideEmail.txt"};
+    final private static String[] TEXT_PARM = {"#{latestPrice}", "#{hopePrice}"};
 
     public static SimpleMailMessage getMessage(int num, String sendToAddress, List<String> paramList) {
         SimpleMailMessage message = null;
@@ -28,14 +29,12 @@ public class MessageFactory {
         String resultText = null;
         try {
             String templatePath = ResourceUtils.getURL("classpath:").getPath() + "templates" + File.separator + EMAIL_TEMPLATE_NAME[num];
-            //System.out.println(templatePath);
             StringBuffer stringBuffer = new StringBuffer();
             readToBuffer(stringBuffer, templatePath);
-            //System.out.println(stringBuffer);
             resultText = stringBuffer.toString();
-            resultText.replace("#{time}", paramList.get(0));
-            resultText.replace("#{latestPrice}", paramList.get(1));
-            resultText.replace("#{hopePrice}", paramList.get(2));
+            for(int i = 0; i < paramList.size(); i++) {
+                resultText = resultText.replace(TEXT_PARM[i], paramList.get(i));
+            }
             System.out.println(resultText);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -53,6 +52,7 @@ public class MessageFactory {
         line = reader.readLine();
         while (line != null) {
             buffer.append(line);
+            buffer.append("\n");
             line = reader.readLine();
         }
         reader.close();

@@ -3,6 +3,7 @@ package pro.sunhao.goldguide.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pro.sunhao.goldguide.data.GoldPriceData;
 import pro.sunhao.goldguide.data.GoldPriceDataBase;
@@ -17,19 +18,22 @@ import java.util.Map;
 @Service
 public class GoldPriceDataServiceImpl implements GoldPriceDataService {
 
+    @Autowired
+    private GoldPriceAPIConfig goldPriceAPIConfig;
+
     @Override
     public GoldPriceData getGoldPriceData() {
         GoldPriceData goldPriceData = null;
         //GoldPriceDataBase goldPriceDataBase = new GoldPriceDataBase();
-        String host = GoldPriceAPIConfig.HOST;
-        String path = GoldPriceAPIConfig.PATH;
-        String method = GoldPriceAPIConfig.METHOD;
-        String appcode = GoldPriceAPIConfig.APPCODE;
+        String host = goldPriceAPIConfig.getHost();
+        String path = goldPriceAPIConfig.getPath();
+        String method = goldPriceAPIConfig.getMethod();
+        String appcode = goldPriceAPIConfig.getAppcode();
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Authorization", "APPCODE " + appcode);
         Map<String, String> querys = new HashMap<String, String>();
         Map<String, String> bodys = new HashMap<String, String>();
-
+        System.out.println(goldPriceAPIConfig);
         try {
             HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
             //System.out.println(response.toString());

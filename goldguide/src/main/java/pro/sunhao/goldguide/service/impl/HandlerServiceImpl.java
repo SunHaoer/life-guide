@@ -10,7 +10,6 @@ import pro.sunhao.goldguide.pojo.User;
 import pro.sunhao.goldguide.service.HandlerService;
 import pro.sunhao.goldguide.util.MessageFactory;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,14 +24,11 @@ public class HandlerServiceImpl implements HandlerService {
 
     @Override
     public void handle(GoldPriceData goldPriceData) {
-        //System.out.println(goldPriceData);
         List<User> userList = userDao.selectUserAll();
         for(User user : userList) {
-            System.out.println(user.getUserPrice() + " " + goldPriceData.getLatestpri());
             if(goldPriceData.getLatestpri() <= user.getUserPrice()) {
                 List<String> paramList = new ArrayList<String>() {
                     {
-                        this.add(goldPriceData.getTime());
                         this.add(goldPriceData.getLatestpri().toString());
                         this.add(user.getUserPrice().toString());
                     }
@@ -46,6 +42,5 @@ public class HandlerServiceImpl implements HandlerService {
         SimpleMailMessage message = MessageFactory.getMessage(0, sendToAddress, paramList);
         mailSender.send(message);
     }
-
 
 }
