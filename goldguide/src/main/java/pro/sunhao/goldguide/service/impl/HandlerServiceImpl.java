@@ -26,20 +26,29 @@ public class HandlerServiceImpl implements HandlerService {
     public void handle(GoldPriceData goldPriceData) {
         List<User> userList = userDao.selectUserAll();
         for(User user : userList) {
-            if(goldPriceData.getLatestpri() <= user.getUserPrice()) {
+            if(goldPriceData.getLatestpri() <= user.getUserLowPrice()) {    // 提醒买入
                 List<String> paramList = new ArrayList<String>() {
                     {
                         this.add(goldPriceData.getLatestpri().toString());
-                        this.add(user.getUserPrice().toString());
+                        this.add(user.getUserLowPrice().toString());
                     }
                 };
-                sendEmail(user.getUserEmail(), paramList);
+                sendEmail(user.getUserEmail(), paramList, 1);
+            }
+            if(goldPriceData.getLatestpri() >= user.getUserHighPrice()) {    // 提醒卖出
+                List<String> paramList = new ArrayList<String>() {
+                    {
+                        this.add(goldPriceData.getLatestpri().toString());
+                        this.add(user.getUserHighPrice().toString());
+                    }
+                };
+                sendEmail(user.getUserEmail(), paramList, 2);
             }
         }
     }
 
-    private void sendEmail(String sendToAddress, List<String> paramList) {
-        SimpleMailMessage message = MessageFactory.getMessage(0, sendToAddress, paramList);
+    private void sendEmail(String sendToAddress, List<String> paramList, int num) {
+        SimpleMailMessage message = MessageFactory.getMessage(num, sendToAddress, paramList);
         mailSender.send(message);
     }
 

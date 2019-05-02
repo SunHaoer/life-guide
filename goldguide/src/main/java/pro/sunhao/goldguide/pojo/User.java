@@ -4,7 +4,8 @@ public class User {
 
     private Long userId;
     private String userEmail;
-    private Double userPrice;
+    private Double userLowPrice;
+    private Double userHighPrice;
 
     public Long getUserId() {
         return userId;
@@ -22,12 +23,20 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public Double getUserPrice() {
-        return userPrice;
+    public Double getUserLowPrice() {
+        return userLowPrice;
     }
 
-    public void setUserPrice(Double userPrice) {
-        this.userPrice = userPrice;
+    public void setUserLowPrice(Double userLowPrice) {
+        this.userLowPrice = userLowPrice;
+    }
+
+    public Double getUserHighPrice() {
+        return userHighPrice;
+    }
+
+    public void setUserHighPrice(Double userHighPrice) {
+        this.userHighPrice = userHighPrice;
     }
 
     @Override
@@ -37,8 +46,10 @@ public class User {
                 .append(userId);
         sb.append(",\"userEmail\":\"")
                 .append(userEmail).append('\"');
-        sb.append(",\"userPrice\":")
-                .append(userPrice);
+        sb.append(",\"userLowPrice\":")
+                .append(userLowPrice);
+        sb.append(",\"userHighPrice\":")
+                .append(userHighPrice);
         sb.append('}');
         return sb.toString();
     }

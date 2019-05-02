@@ -9,19 +9,18 @@ import java.util.List;
 public class MessageFactory {
 
     final private static String FROM_ADDRESS = "2457302636@qq.com";
-    final private static String[] EMAIL_SUBJECT = {"gold guide"};
-    final private static String[] EMAIL_TEMPLATE_NAME = {"goldGuideEmail.txt"};
-    final private static String[] TEXT_PARM = {"#{latestPrice}", "#{hopePrice}"};
+    final private static String[] EMAIL_SUBJECT = {"", "gold guide", "gold guide"};
+    final private static String[] EMAIL_TEMPLATE_NAME = {"", "goldLowGuideEmail.txt", "goldHighGuideEmail.txt"};
+    final private static String[] TEXT_PARM_GOLD = {"#{latestPrice}", "#{hopePrice}"};
 
     public static SimpleMailMessage getMessage(int num, String sendToAddress, List<String> paramList) {
         SimpleMailMessage message = null;
-        if(num == 0) {    // 提醒黄金价格邮件
-            message = new SimpleMailMessage();
-            message.setFrom(FROM_ADDRESS);
-            message.setTo(sendToAddress);
-            message.setSubject(EMAIL_SUBJECT[0]);
-            message.setText(getEmailTemplate(num, paramList));
-        }
+        message = new SimpleMailMessage();
+        message.setFrom(FROM_ADDRESS);
+        message.setTo(sendToAddress);
+        message.setSubject(EMAIL_SUBJECT[num]);
+        message.setText(getEmailTemplate(num, paramList));
+
         return message;
     }
 
@@ -33,7 +32,7 @@ public class MessageFactory {
             readToBuffer(stringBuffer, templatePath);
             resultText = stringBuffer.toString();
             for(int i = 0; i < paramList.size(); i++) {
-                resultText = resultText.replace(TEXT_PARM[i], paramList.get(i));
+                resultText = resultText.replace(TEXT_PARM_GOLD[i], paramList.get(i));
             }
             System.out.println(resultText);
         } catch (FileNotFoundException e) {
