@@ -38,7 +38,7 @@ public class GoldPriceDataServiceImpl implements GoldPriceDataService {
             //System.out.println(response.toString());
             //获取response的body
             String respStr = EntityUtils.toString(response.getEntity());
-
+            System.out.println(respStr);
             GoldPriceResp resp = JSONObject.parseObject(respStr, GoldPriceResp.class);
             GoldPriceDataBase goldPriceDataBase = resp.getResult().get(1);
             goldPriceData = new GoldPriceData(goldPriceDataBase);

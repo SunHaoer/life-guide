@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Configuration
 @Component
 @PropertySource("classpath:APIConfig.properties")
-public class GoldPriceAPIConfig {
+public class GoldPriceAPIConfig extends APIConfig {
 
     @Value("${api.goldprice.host}")
     private String host;
@@ -38,19 +38,19 @@ public class GoldPriceAPIConfig {
         return appcode;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("{");
-        sb.append("\"host\":\"")
-                .append(host).append('\"');
-        sb.append(",\"path\":\"")
-                .append(path).append('\"');
-        sb.append(",\"method\":\"")
-                .append(method).append('\"');
-        sb.append(",\"appcode\":\"")
-                .append(appcode).append('\"');
-        sb.append('}');
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        final StringBuilder sb = new StringBuilder("{");
+//        sb.append("\"host\":\"")
+//                .append(host).append('\"');
+//        sb.append(",\"path\":\"")
+//                .append(path).append('\"');
+//        sb.append(",\"method\":\"")
+//                .append(method).append('\"');
+//        sb.append(",\"appcode\":\"")
+//                .append(appcode).append('\"');
+//        sb.append('}');
+//        return sb.toString();
+//    }
 
 }
