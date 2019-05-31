@@ -1,5 +1,12 @@
 package pro.sunhao.lifeguide.data.gold;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class GoldPriceData {
 
     private String variety;    // 种类
@@ -12,9 +19,6 @@ public class GoldPriceData {
     private Double totalvol;    // 总成交量
     private String time;    // 更新时间
 
-    public GoldPriceData() {
-    }
-
     public GoldPriceData(GoldPriceDataBase goldPriceDataBase) {
         this.variety = goldPriceDataBase.getVariety();
         this.latestpri = Double.parseDouble(goldPriceDataBase.getLatestpri());
@@ -25,78 +29,6 @@ public class GoldPriceData {
         this.yespri = Double.parseDouble(goldPriceDataBase.getYespri());
         this.totalvol = Double.parseDouble(goldPriceDataBase.getTotalvol());
         this.time = goldPriceDataBase.getTime();
-    }
-
-    public String getVariety() {
-        return variety;
-    }
-
-    public void setVariety(String variety) {
-        this.variety = variety;
-    }
-
-    public Double getLatestpri() {
-        return latestpri;
-    }
-
-    public void setLatestpri(Double latestpri) {
-        this.latestpri = latestpri;
-    }
-
-    public Double getOpenpri() {
-        return openpri;
-    }
-
-    public void setOpenpri(Double openpri) {
-        this.openpri = openpri;
-    }
-
-    public Double getMaxpri() {
-        return maxpri;
-    }
-
-    public void setMaxpri(Double maxpri) {
-        this.maxpri = maxpri;
-    }
-
-    public Double getMinpri() {
-        return minpri;
-    }
-
-    public void setMinpri(Double minpri) {
-        this.minpri = minpri;
-    }
-
-    public String getLimit() {
-        return limit;
-    }
-
-    public void setLimit(String limit) {
-        this.limit = limit;
-    }
-
-    public Double getYespri() {
-        return yespri;
-    }
-
-    public void setYespri(Double yespri) {
-        this.yespri = yespri;
-    }
-
-    public Double getTotalvol() {
-        return totalvol;
-    }
-
-    public void setTotalvol(Double totalvol) {
-        this.totalvol = totalvol;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     @Override

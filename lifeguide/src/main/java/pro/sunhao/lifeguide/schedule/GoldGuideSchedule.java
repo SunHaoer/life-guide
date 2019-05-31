@@ -21,7 +21,7 @@ public class GoldGuideSchedule {
     public void GoldGuideScheduledTask() {
         GoldPriceData goldPriceData = goldPriceDataService.getGoldPriceData();
         if(goldPriceData == null) {
-            System.out.println("API 出错");
+            System.out.println("API error");
         } else {
             goldHandlerService.handle(goldPriceData);
         }

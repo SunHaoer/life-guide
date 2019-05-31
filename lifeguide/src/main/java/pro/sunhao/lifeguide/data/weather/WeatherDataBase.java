@@ -1,5 +1,12 @@
 package pro.sunhao.lifeguide.data.weather;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class WeatherDataBase {
 
     private String weather_code;
@@ -10,70 +17,6 @@ public class WeatherDataBase {
     private String weather;
     private String areaid;
     private String temperature;
-
-    public String getWeather_code() {
-        return weather_code;
-    }
-
-    public void setWeather_code(String weather_code) {
-        this.weather_code = weather_code;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
-
-    public String getWind_direction() {
-        return wind_direction;
-    }
-
-    public void setWind_direction(String wind_direction) {
-        this.wind_direction = wind_direction;
-    }
-
-    public String getWind_power() {
-        return wind_power;
-    }
-
-    public void setWind_power(String wind_power) {
-        this.wind_power = wind_power;
-    }
-
-    public String getWeather() {
-        return weather;
-    }
-
-    public void setWeather(String weather) {
-        this.weather = weather;
-    }
-
-    public String getAreaid() {
-        return areaid;
-    }
-
-    public void setAreaid(String areaid) {
-        this.areaid = areaid;
-    }
-
-    public String getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
-    }
 
     @Override
     public String toString() {

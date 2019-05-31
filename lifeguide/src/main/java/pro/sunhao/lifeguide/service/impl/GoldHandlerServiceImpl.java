@@ -25,7 +25,9 @@ public class GoldHandlerServiceImpl implements GoldHandlerService {
     @Override
     public void handle(GoldPriceData goldPriceData) {
         List<GoldUser> userList = userDao.selectUserAll();
+        System.out.println(userList);
         for(GoldUser user : userList) {
+            System.out.println(user.getUserHighPrice() + " " + user.getUserLowPrice() + " " + goldPriceData.getLatestpri());
             if(goldPriceData.getLatestpri() <= user.getUserLowPrice()) {    // 提醒买入
                 List<String> paramList = new ArrayList<String>() {
                     {
@@ -50,6 +52,7 @@ public class GoldHandlerServiceImpl implements GoldHandlerService {
     private void sendEmail(String sendToAddress, List<String> paramList, int num) {
         SimpleMailMessage message = MessageFactory.getMessage(num, sendToAddress, paramList);
         mailSender.send(message);
+        System.out.println("send success!");
     }
 
 }

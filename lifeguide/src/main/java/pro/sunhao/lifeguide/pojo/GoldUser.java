@@ -1,43 +1,18 @@
 package pro.sunhao.lifeguide.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class GoldUser {
 
     private Long userId;
     private String userEmail;
     private Double userLowPrice;
     private Double userHighPrice;
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public Double getUserLowPrice() {
-        return userLowPrice;
-    }
-
-    public void setUserLowPrice(Double userLowPrice) {
-        this.userLowPrice = userLowPrice;
-    }
-
-    public Double getUserHighPrice() {
-        return userHighPrice;
-    }
-
-    public void setUserHighPrice(Double userHighPrice) {
-        this.userHighPrice = userHighPrice;
-    }
 
     @Override
     public String toString() {

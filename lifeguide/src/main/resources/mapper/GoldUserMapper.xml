@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="pro.sunhao.lifeguide.dao.GoldUserDao">
 
-    <select id="selectUserAll" resultType="GoldUser">
-		select * from gold_user;
+    <select id="selectUserAll" resultType="pro.sunhao.lifeguide.pojo.GoldUser">
+		select * from gold_user
 	</select>
 
 </mapper>

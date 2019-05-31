@@ -1,7 +1,10 @@
 package pro.sunhao.lifeguide.info;
 
-import org.springframework.beans.factory.annotation.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
 public class APIConfig {
 
     protected String host;

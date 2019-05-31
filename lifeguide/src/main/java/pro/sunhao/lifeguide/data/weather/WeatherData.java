@@ -1,5 +1,10 @@
 package pro.sunhao.lifeguide.data.weather;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class WeatherData {
 
     private boolean fine;
@@ -10,30 +15,6 @@ public class WeatherData {
         this.fine = true;
         this.lowTemperature = 100;
         this.highTemperature = -100;
-    }
-
-    public boolean isFine() {
-        return fine;
-    }
-
-    public void setFine(boolean fine) {
-        this.fine = fine;
-    }
-
-    public int getLowTemperature() {
-        return lowTemperature;
-    }
-
-    public void setLowTemperature(int lowTemperature) {
-        this.lowTemperature = lowTemperature;
-    }
-
-    public int getHighTemperature() {
-        return highTemperature;
-    }
-
-    public void setHighTemperature(int highTemperature) {
-        this.highTemperature = highTemperature;
     }
 
     @Override

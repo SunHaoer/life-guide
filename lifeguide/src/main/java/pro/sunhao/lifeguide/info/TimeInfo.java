@@ -4,7 +4,7 @@ public class TimeInfo {
 
     final public static String RUN_TIME = "0 30 14 ? * MON-FRI";
 
-    final public static String TEST_TIME = "0 44 15 ? * MON-FRI";
+    final public static String TEST_TIME = "0 24 15 ? * MON-FRI";
 
 }
 
